@@ -29,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ArrayList<> data = new ArrayList<>();
+        ArrayList<String> data = new ArrayList<String>();
+        for (int i = 1; i <= 10; i++) {
+            data.add(("Person " + i));
+        }
+
     }
 
     @Override
