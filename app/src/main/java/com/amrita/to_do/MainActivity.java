@@ -2,6 +2,7 @@ package com.amrita.to_do;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,10 +18,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<ListModel> item;
-    Button fab;
+    FloatingActionButton fab;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
 
         try {
 
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             rvToDo.setAdapter(adapter);
             rvToDo.setLayoutManager(new LinearLayoutManager(this));
         }
+
         catch (Exception e){
             Log.d("Debug", "In Catch");
         }
@@ -39,25 +42,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        fab = (Button) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
                 Log.d("Debug","FAB Clicked");
+                AddToDo fragment =new AddToDo();
                 FragmentTransaction f =getSupportFragmentManager().beginTransaction();
+
                 f.replace(R.id.newfrag,new AddToDo());
                 f.commit();
-
             }
         });
 
-
     }
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
 
         int id = item.getItemId();
 
