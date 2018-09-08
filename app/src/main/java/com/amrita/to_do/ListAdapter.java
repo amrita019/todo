@@ -45,7 +45,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     public ListAdapter(List<ListModel> list){
         this.todoList = list;
-        Log.d("Debug todoList=", String.valueOf(list));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

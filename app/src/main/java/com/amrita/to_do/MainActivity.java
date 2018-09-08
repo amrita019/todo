@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -22,11 +23,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         try {
 
             RecyclerView rvToDo = (RecyclerView) findViewById(R.id.recyclerView);
             item = ListModel.createList();
-            Log.d("Debug item=", String.valueOf(item));
             ListAdapter adapter = new ListAdapter(item);
             rvToDo.setAdapter(adapter);
             rvToDo.setLayoutManager(new LinearLayoutManager(this));
@@ -35,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Debug", "In Catch");
         }
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         fab = (Button) findViewById(R.id.fab);

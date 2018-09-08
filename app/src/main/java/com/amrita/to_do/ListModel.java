@@ -17,15 +17,13 @@ public class ListModel {
         return todo;
     }
 
-
     public static ArrayList<ListModel> createList(){
         ArrayList<ListModel> data = new ArrayList<>();
 
         for (int i = 1; i <= 10; i++) {
-            data.add(new ListModel("Person " + i));
+            data.add(new ListModel("Person"+ i));
         }
 
-        Log.d("Debug data=", String.valueOf(data));
         return data;
     }
 }
