@@ -1,5 +1,6 @@
 package com.amrita.to_do;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -49,12 +50,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Log.d("Debug","FAB Clicked");
-                AddToDo fragment =new AddToDo();
-                FragmentTransaction f =getSupportFragmentManager().beginTransaction();
-
-                f.replace(R.id.newfrag,new AddToDo());
-                f.commit();
+                Intent intent= new Intent(MainActivity.this,to_do.class);
+                startActivity(intent);
+                Log.d("Debug", "new Activity");
             }
         });
 
