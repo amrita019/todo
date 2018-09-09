@@ -17,22 +17,28 @@ public class ListModel {
         return todo;
     }
 
-    public static ArrayList<ListModel> createList(){
+    public static ArrayList<ListModel> showList(){
         ArrayList<ListModel> data = new ArrayList<>();
-
-        for (int i = 1; i <= 10; i++) {
-            data.add(new ListModel("Person"+ i));
-        }
         data2 = data;
+        Log.d("Debug showList",String.valueOf(data2));
+        return data2;
+    }
+
+    public static ArrayList<ListModel> addElement(String todoTitle){
+        ArrayList<ListModel> data = new ArrayList<>();
+        data = data2;
+        data.add(new ListModel(todoTitle));
+        data2 = data;
+        Log.d("Debug addElement",String.valueOf(data2));
         return data2;
     }
 
     public static ArrayList<ListModel> deleteElement(int position){
-        ArrayList<ListModel> data3 = new ArrayList<>();
-        data3 = data2;
-        data3.remove(position);
-        data2 = data3;
-        Log.d("Debug", String.valueOf(data2));
+        ArrayList<ListModel> data = new ArrayList<>();
+        data = data2;
+        data.remove(position);
+        data2 = data;
+        Log.d("Debug deleteElement", String.valueOf(data2));
         return data2;
     }
 
