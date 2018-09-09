@@ -6,13 +6,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     private List<ListModel> todoList;
+    ArrayList<ListModel> listModel;
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -49,11 +52,24 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView todoTextView;
-
+        public ImageButton doneButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             todoTextView = (TextView) itemView.findViewById(R.id.textView);
+            doneButton = (ImageButton) itemView.findViewById(R.id.doneImageButton);
+
+            doneButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
+                {
+                    final int position = getAdapterPosition();
+                    Log.d("Debug", String.valueOf(position));
+                    listModel = ListModel.deleteElement(position);
+
+                }
+            });
         }
     }
 }
