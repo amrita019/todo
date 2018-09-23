@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             RecyclerView rvToDo = (RecyclerView) findViewById(R.id.recyclerView);
-            storeAndRetriveData.retreiveData(getApplicationContext());
-            item = ListModel.showList();
+            item = storeAndRetriveData.retreiveData(getApplicationContext());
+//            item = ListModel.showList();
             ListAdapter adapter = new ListAdapter(item);
             rvToDo.setAdapter(adapter);
             rvToDo.setLayoutManager(new LinearLayoutManager(this));
