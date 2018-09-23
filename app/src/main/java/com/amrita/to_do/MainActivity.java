@@ -21,6 +21,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ArrayList<ListModel> item;
     FloatingActionButton fab;
+    public static StoreAndRetriveData storeAndRetriveData = new StoreAndRetriveData();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             RecyclerView rvToDo = (RecyclerView) findViewById(R.id.recyclerView);
+            storeAndRetriveData.retreiveData();
             item = ListModel.showList();
             ListAdapter adapter = new ListAdapter(item);
             rvToDo.setAdapter(adapter);
