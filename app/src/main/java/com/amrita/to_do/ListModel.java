@@ -28,6 +28,7 @@ public class ListModel {
         return todo;
     }
 
+
     public static ArrayList<ListModel> showList(){
         ArrayList<ListModel> data = new ArrayList<>();
         majorList = data;

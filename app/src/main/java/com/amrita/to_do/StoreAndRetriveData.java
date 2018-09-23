@@ -9,11 +9,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -51,22 +54,30 @@ public class StoreAndRetriveData {
 
     }
 
-//    public List<ListModel> retreiveData(Context context){
-//
-//        try {
-//            FileInputStream fis = context.openFileInput(filename);
+    public String retreiveData(Context context){
+        ArrayList<ListModel> items = new ArrayList<>();
+        BufferedReader bufferedReader = null;
+
+        try {
+            FileInputStream fis = context.openFileInput(filename);
+            StringBuilder builder = new StringBuilder();
+            String line;
+            bufferedReader = new BufferedReader(new InputStreamReader(fis));
+            while ((line = bufferedReader.readLine()) != null) {
+                builder.append(line);
+            }
 //            Scanner scanner = new Scanner(fis);
 //            scanner.useDelimiter("\\Z");
 //            String content = scanner.next();
 //            scanner.close();
 //            Log.d("Debug Amrita", content);
 //            return content;
-//
-//        } catch (Exception e) {
-//            Log.d("Debug Amrita", "In catch of retrieve data");
-//            e.printStackTrace();
-//        }
-//    }
+        } catch (Exception e) {
+            Log.d("Debug Amrita", "In catch of retrieve data");
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public JSONArray makeJSON(List<ListModel> listModel) throws JSONException {
         JSONObject obj;
