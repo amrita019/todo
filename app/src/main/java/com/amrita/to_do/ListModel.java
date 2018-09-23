@@ -9,6 +9,8 @@ public class ListModel {
     private String todo;
     public static ArrayList<ListModel> data2 = new ArrayList<>();
 
+    public static StoreAndRetriveData storeAndRetriveData = new StoreAndRetriveData();
+
     public ListModel(String name) {
         todo = name;
     }
@@ -25,9 +27,11 @@ public class ListModel {
     }
 
     public static ArrayList<ListModel> addElement(String todoTitle){
+
         ArrayList<ListModel> data = new ArrayList<>();
         data = data2;
         data.add(new ListModel(todoTitle));
+        storeAndRetriveData.storeData(String.valueOf(data));
         data2 = data;
         Log.d("Debug addElement",String.valueOf(data2));
         return data2;
