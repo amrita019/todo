@@ -6,9 +6,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Scanner;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -32,10 +34,18 @@ public class StoreAndRetriveData {
 
     }
 
-    public void retreiveData(){
+    public void retreiveData(Context context){
 
-        Log.d("Debug Amrita", "Retreive Data called");
-
-
+        try {
+            FileInputStream fis = context.openFileInput(filename);
+            Scanner scanner = new Scanner(fis);
+            scanner.useDelimiter("\\Z");
+            String content = scanner.next();
+            scanner.close();
+            Log.d("Debug Amrita", content);
+        } catch (Exception e) {
+            Log.d("Debug Amrita", "In catch of retrieve data");
+            e.printStackTrace();
+        }
     }
 }
