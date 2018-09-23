@@ -9,6 +9,7 @@ public class ListModel {
 
     private String todo;
     public Context context;
+
     public static ArrayList<ListModel> data2 = new ArrayList<>();
 
     public static StoreAndRetriveData storeAndRetriveData = new StoreAndRetriveData();
