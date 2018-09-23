@@ -37,7 +37,7 @@ public class AddToDo extends Fragment {
             {
                 if(editText.getText().toString() != null) {
                     String toDoTitle = editText.getText().toString();
-                    listModel = ListModel.addElement(toDoTitle, context);
+                    listModel = ListModel.addElement(toDoTitle,"date", "time", context);
                     Intent i = new Intent(getActivity(), MainActivity.class);
                     startActivity(i);
                     ((Activity) getActivity()).overridePendingTransition(0,0);
