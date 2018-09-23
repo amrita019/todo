@@ -44,7 +44,7 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
                 if(editText.getText().toString() != null)
                 {
                     String toDoTitle = editText.getText().toString();
-                    listModel = ListModel.addElement(toDoTitle, getApplicationContext());
+                    listModel = ListModel.addElement(toDoTitle,"date", "time", getApplicationContext());
                     Intent i = new Intent(to_do.this,MainActivity.class);
                     startActivity(i);
 

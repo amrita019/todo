@@ -8,16 +8,21 @@ import java.util.ArrayList;
 public class ListModel {
 
     private String todo;
+    private String date;
+    private String time;
     public Context context;
 
 
-    public static ArrayList<ListModel> data2 = new ArrayList<>();
+    public static ArrayList<ListModel> majorList = new ArrayList<>();
 
     public static StoreAndRetriveData storeAndRetriveData = new StoreAndRetriveData();
 
-    public ListModel(String name) {
+    public ListModel(String name, String date, String time) {
         todo = name;
+        this.date = date;
+        this.time = time;
     }
+
 
     public String getName() {
         return todo;
@@ -25,29 +30,29 @@ public class ListModel {
 
     public static ArrayList<ListModel> showList(){
         ArrayList<ListModel> data = new ArrayList<>();
-        data2 = data;
-        Log.d("Debug showList",String.valueOf(data2));
-        return data2;
+        majorList = data;
+        Log.d("Debug showList",String.valueOf(majorList));
+        return majorList;
     }
 
-    public static ArrayList<ListModel> addElement(String todoTitle, Context context){
+    public static ArrayList<ListModel> addElement(String todoTitle, String date, String time, Context context){
 
         ArrayList<ListModel> data = new ArrayList<>();
-        data = data2;
-        data.add(new ListModel(todoTitle));
-        storeAndRetriveData.storeData(String.valueOf(data), context);
-        data2 = data;
-        Log.d("Debug addElement",String.valueOf(data2));
-        return data2;
+        data = majorList;
+        data.add(new ListModel(todoTitle, date, time));
+        majorList = data;
+        storeAndRetriveData.storeData(majorList, context);
+        Log.d("Debug addElement",String.valueOf(majorList));
+        return majorList;
     }
 
     public static ArrayList<ListModel> deleteElement(int position){
         ArrayList<ListModel> data = new ArrayList<>();
-        data = data2;
+        data = majorList;
         data.remove(position);
-        data2 = data;
-        Log.d("Debug deleteElement", String.valueOf(data2));
-        return data2;
+        majorList = data;
+        Log.d("Debug deleteElement", String.valueOf(majorList));
+        return majorList;
     }
 
 }
