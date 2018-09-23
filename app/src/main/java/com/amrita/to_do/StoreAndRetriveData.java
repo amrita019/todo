@@ -82,6 +82,8 @@ public class StoreAndRetriveData {
 
 
             Log.d("Debug Amrita", String.valueOf(items));
+            fis.close();
+            bufferedReader.close();
             return items;
 
 //
@@ -116,7 +118,7 @@ public class StoreAndRetriveData {
             ListModel listModel1 = listModel.get(i);
             obj = new JSONObject();
             try {
-                obj.put("item", listModel1.getName());
+                obj.put("todo", listModel1.getName());
                 obj.put("date", listModel1.getDate());
                 obj.put("time", listModel1.getTime());
 
