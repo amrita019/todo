@@ -27,6 +27,15 @@ public class ListModel {
     public String getName() {
         return todo;
     }
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+
 
 
     public static ArrayList<ListModel> showList(){
