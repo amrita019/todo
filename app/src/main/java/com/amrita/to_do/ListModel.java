@@ -30,10 +30,10 @@ public class ListModel {
     public String getDate() {
         return date;
     }
-
     public String getTime() {
         return time;
     }
+
 
 
 
