@@ -37,7 +37,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         // Set item views based on your views and data model
         TextView textView = holder.todoTextView;
-        textView.setText(todoItem.getName());
+        textView.setText(todoItem.getTime());
+        Log.d("Debug Amrita", String.valueOf(todoItem.getName()) + String.valueOf(todoItem.getTime() + " " + String.valueOf(todoItem.getDate())));
 
     }
 

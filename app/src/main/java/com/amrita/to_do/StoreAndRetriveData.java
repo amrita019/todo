@@ -5,6 +5,10 @@ import android.content.ContextWrapper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -55,7 +60,7 @@ public class StoreAndRetriveData {
 
     }
 
-    public String retreiveData(Context context){
+    public ArrayList<ListModel> retreiveData(Context context){
         ArrayList<ListModel> items = new ArrayList<>();
         BufferedReader bufferedReader = null;
 
@@ -68,9 +73,16 @@ public class StoreAndRetriveData {
                 builder.append(line);
             }
 
+            Gson gson = new Gson();
             JSONArray jsonArray = (JSONArray) new JSONTokener(builder.toString()).nextValue();
+            Type listType = new TypeToken<List<ListModel>>(){}.getType();
+            items = gson.fromJson(jsonArray.toString(), listType);
 
-            Log.d("Debug Amrita", String.valueOf(jsonArray));
+
+
+
+            Log.d("Debug Amrita", String.valueOf(items));
+            return items;
 
 //
 //            for (int i = 0; i < jsonArray.length(); i++) {
@@ -94,7 +106,7 @@ public class StoreAndRetriveData {
             Log.d("Debug Amrita", "In catch of retrieve data");
             e.printStackTrace();
         }
-        return null;
+        return items;
     }
 
     public JSONArray makeJSON(List<ListModel> listModel) throws JSONException {
