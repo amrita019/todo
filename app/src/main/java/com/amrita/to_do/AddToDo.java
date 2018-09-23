@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class AddToDo extends Fragment {
 
     ArrayList<ListModel> listModel;
+    public Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -36,7 +37,7 @@ public class AddToDo extends Fragment {
             {
                 if(editText.getText().toString() != null) {
                     String toDoTitle = editText.getText().toString();
-                    listModel = ListModel.addElement(toDoTitle);
+                    listModel = ListModel.addElement(toDoTitle, context);
                     Intent i = new Intent(getActivity(), MainActivity.class);
                     startActivity(i);
                     ((Activity) getActivity()).overridePendingTransition(0,0);

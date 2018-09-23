@@ -3,6 +3,7 @@ package com.amrita.to_do;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
     ArrayList<ListModel> listModel;
     EditText txtDate;
     EditText txtTime;
+    public Context context;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
 
@@ -42,7 +44,7 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
                 if(editText.getText().toString() != null)
                 {
                     String toDoTitle = editText.getText().toString();
-                    listModel = ListModel.addElement(toDoTitle);
+                    listModel = ListModel.addElement(toDoTitle, context);
                     Intent i = new Intent(to_do.this,MainActivity.class);
                     startActivity(i);
 
