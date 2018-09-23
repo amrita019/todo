@@ -8,6 +8,7 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -66,6 +67,23 @@ public class StoreAndRetriveData {
             while ((line = bufferedReader.readLine()) != null) {
                 builder.append(line);
             }
+
+            JSONArray jsonArray = (JSONArray) new JSONTokener(builder.toString()).nextValue();
+
+            Log.d("Debug Amrita", String.valueOf(jsonArray));
+
+//
+//            for (int i = 0; i < jsonArray.length(); i++) {
+////                ListModel listModel = new ListModel(jsonArray.getJSONObject(i));
+//                items.add(jsonArray.getString(i));
+//            }
+
+
+
+
+
+
+
 //            Scanner scanner = new Scanner(fis);
 //            scanner.useDelimiter("\\Z");
 //            String content = scanner.next();
@@ -87,8 +105,8 @@ public class StoreAndRetriveData {
             obj = new JSONObject();
             try {
                 obj.put("item", listModel1.getName());
-                obj.put("date", listModel1.getName());
-                obj.put("time", listModel1.getName());
+                obj.put("date", listModel1.getDate());
+                obj.put("time", listModel1.getTime());
 
             } catch (JSONException e) {
                 e.printStackTrace();
