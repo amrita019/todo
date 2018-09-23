@@ -9,10 +9,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,6 +27,7 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
     ArrayList<ListModel> listModel;
     EditText txtDate;
     EditText txtTime;
+    View toDoEnterDateLinearLayout;
     public Context context;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
@@ -35,6 +39,19 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
 
         mtdfab = (FloatingActionButton) findViewById(R.id.makeToDoFloatingActionButton);
        final EditText editText= (EditText)findViewById(R.id.userToDoEditText);
+
+       /* Switch simpleSwitch = (Switch) findViewById(R.id.toDoHasDateSwitchCompat);
+        simpleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (toDoEnterDateLinearLayout.getVisibility() == View.VISIBLE)
+                    toDoEnterDateLinearLayout.setVisibility(View.INVISIBLE);
+
+                else {
+                    toDoEnterDateLinearLayout.setVisibility(View.VISIBLE);
+                }
+            }
+        });*/
 
 
 

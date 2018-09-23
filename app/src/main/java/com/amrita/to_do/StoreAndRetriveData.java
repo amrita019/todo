@@ -76,8 +76,8 @@ public class StoreAndRetriveData {
             obj = new JSONObject();
             try {
                 obj.put("item", listModel1.getName());
-                obj.put("date", listModel1.getName());
-                obj.put("time", listModel1.getName());
+                obj.put("date", listModel1.getDate());
+                obj.put("time", listModel1.getTime());
 
             } catch (JSONException e) {
                 e.printStackTrace();
