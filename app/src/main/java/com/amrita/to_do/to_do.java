@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class to_do extends AppCompatActivity implements View.OnClickListener {
 
@@ -44,7 +45,10 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
                 if(editText.getText().toString() != null)
                 {
                     String toDoTitle = editText.getText().toString();
-                    listModel = ListModel.addElement(toDoTitle,"date", "time", getApplicationContext());
+                    String date = txtDate.getText().toString();
+                    String time=txtTime.getText().toString();
+
+                    listModel = ListModel.addElement(toDoTitle,date,time, getApplicationContext());
                     Intent i = new Intent(to_do.this,MainActivity.class);
                     startActivity(i);
 
