@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -27,7 +28,7 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
     ArrayList<ListModel> listModel;
     EditText txtDate;
     EditText txtTime;
-    View toDoEnterDateLinearLayout;
+    LinearLayout toDoEnterDateLinearLayout;
     public Context context;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
@@ -37,21 +38,23 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do);
 
+        toDoEnterDateLinearLayout = (LinearLayout) findViewById(R.id.toDoEnterDateLinearLayout);
         mtdfab = (FloatingActionButton) findViewById(R.id.makeToDoFloatingActionButton);
-       final EditText editText= (EditText)findViewById(R.id.userToDoEditText);
+        final EditText editText= (EditText)findViewById(R.id.userToDoEditText);
 
-       /* Switch simpleSwitch = (Switch) findViewById(R.id.toDoHasDateSwitchCompat);
-        simpleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        Switch reminderSwitch = (Switch) findViewById(R.id.toDoHasDateSwitchCompat);
+        reminderSwitch.setChecked(true);
+        reminderSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (toDoEnterDateLinearLayout.getVisibility() == View.VISIBLE)
-                    toDoEnterDateLinearLayout.setVisibility(View.INVISIBLE);
-
+                if (!isChecked){
+                    toDoEnterDateLinearLayout.setVisibility(View.GONE);
+                }
                 else {
                     toDoEnterDateLinearLayout.setVisibility(View.VISIBLE);
                 }
             }
-        });*/
+        });
 
 
 

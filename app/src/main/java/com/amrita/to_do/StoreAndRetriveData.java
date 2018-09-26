@@ -38,7 +38,6 @@ public class StoreAndRetriveData {
     public void storeData(List<ListModel> majorList, Context context){
 
         try {
-            File file = new File(context.getFilesDir(), filename);
             FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
             JSONArray jsonObject = null;
 
