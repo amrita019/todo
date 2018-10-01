@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
@@ -30,6 +31,7 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
     EditText txtTime;
     LinearLayout toDoEnterDateLinearLayout;
     public Context context;
+    boolean hasReminder = true;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
 
@@ -53,7 +55,11 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
                 else {
                     toDoEnterDateLinearLayout.setVisibility(View.VISIBLE);
                 }
+
+                hasReminder = isChecked;
+                Log.d("Debug Amrita Switch", String.valueOf(hasReminder));
             }
+
         });
 
 
@@ -68,7 +74,7 @@ public class to_do extends AppCompatActivity implements View.OnClickListener {
                     String date = txtDate.getText().toString();
                     String time=txtTime.getText().toString();
 
-                    listModel = ListModel.addElement(toDoTitle,date,time, getApplicationContext());
+                    listModel = ListModel.addElement(toDoTitle, date, time, hasReminder, getApplicationContext());
                     Intent i = new Intent(to_do.this,MainActivity.class);
                     startActivity(i);
 

@@ -78,8 +78,6 @@ public class StoreAndRetriveData {
             items = gson.fromJson(jsonArray.toString(), listType);
 
 
-
-
             Log.d("Debug Amrita", String.valueOf(items));
             fis.close();
             bufferedReader.close();
@@ -90,13 +88,6 @@ public class StoreAndRetriveData {
 ////                ListModel listModel = new ListModel(jsonArray.getJSONObject(i));
 //                items.add(jsonArray.getString(i));
 //            }
-
-
-
-
-
-
-
 //            Scanner scanner = new Scanner(fis);
 //            scanner.useDelimiter("\\Z");
 //            String content = scanner.next();
@@ -120,7 +111,7 @@ public class StoreAndRetriveData {
                 obj.put("todo", listModel1.getName());
                 obj.put("date", listModel1.getDate());
                 obj.put("time", listModel1.getTime());
-
+                obj.put("hasReminder", listModel1.getHasReminder());
             } catch (JSONException e) {
                 e.printStackTrace();
             }

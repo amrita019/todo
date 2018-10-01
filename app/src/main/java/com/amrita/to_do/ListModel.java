@@ -10,6 +10,7 @@ public class ListModel {
     private String todo;
     private String date;
     private String time;
+    private boolean hasReminder;
     public Context context;
 
 
@@ -17,10 +18,11 @@ public class ListModel {
 
     public static StoreAndRetriveData storeAndRetriveData = new StoreAndRetriveData();
 
-    public ListModel(String name, String date, String time) {
+    public ListModel(String name, String date, String time, boolean hasReminder) {
         todo = name;
         this.date = date;
         this.time = time;
+        this.hasReminder = hasReminder;
     }
 
 
@@ -33,7 +35,7 @@ public class ListModel {
     public String getTime() {
         return time;
     }
-
+    public boolean getHasReminder() { return  hasReminder; }
 
 
 
@@ -44,11 +46,11 @@ public class ListModel {
         return majorList;
     }
 
-    public static ArrayList<ListModel> addElement(String todoTitle, String date, String time, Context context){
+    public static ArrayList<ListModel> addElement(String todoTitle, String date, String time, boolean hasReminder, Context context){
 
         ArrayList<ListModel> data = new ArrayList<>();
         data = majorList;
-        data.add(new ListModel(todoTitle, date, time));
+        data.add(new ListModel(todoTitle, date, time, hasReminder));
         majorList = data;
         storeAndRetriveData.storeData(majorList, context);
         Log.d("Debug addElement",String.valueOf(majorList));
@@ -56,12 +58,21 @@ public class ListModel {
     }
 
     public static ArrayList<ListModel> deleteElement(int position){
-        ArrayList<ListModel> data = new ArrayList<>();
-        data = majorList;
-        data.remove(position);
-        majorList = data;
-        Log.d("Debug deleteElement", String.valueOf(majorList));
-        return majorList;
+
+        try{
+            ArrayList<ListModel> data = new ArrayList<>();
+            data = majorList;
+            data.remove(position);
+            majorList = data;
+            Log.d("Debug deleteElement", String.valueOf(majorList));
+            return majorList;
+        }
+        catch(Exception e){
+            Log.d("Debug Amrita", String.valueOf(e));
+        }
+
+         return majorList;
+
     }
 
 }
