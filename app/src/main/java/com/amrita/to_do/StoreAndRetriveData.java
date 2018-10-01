@@ -37,12 +37,14 @@ public class StoreAndRetriveData {
 
     public void storeData(List<ListModel> majorList, Context context){
 
+        ArrayList<ListModel> combinedList = new ArrayList<>(retreiveData(context));
+        combinedList.addAll(majorList);
         try {
             FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
             JSONArray jsonObject = null;
 
             try {
-                jsonObject = makeJSON(majorList);
+                jsonObject = makeJSON(combinedList);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
